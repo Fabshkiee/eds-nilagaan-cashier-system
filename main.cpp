@@ -3,6 +3,7 @@
 #include "user.h"
 #include "food_item.h"
 #include "admin.h"
+#include "clearSystem.h"
 using namespace std;
 
 //for arrays
@@ -18,8 +19,8 @@ int menuCount = 0;
 
 // Initialize system data
 void initializeSystem() {
-    loadUsers(); // no arguments, uses global users
-    loadMenu();  // no arguments, uses global menu
+    loadUsers(); 
+    loadMenu(); 
 }
 
 // Display welcome screen
@@ -29,8 +30,8 @@ void displayWelcome() {
     cout << "=============================================\n";
     cout << "\n";
     cout << "      Ready for another flavorful day?\n";
-    cout << "            LOG IN NADA MANGO!\n";
-    cout << "\n";
+    cout << "            LOG IN NADA MANGO!\n\n\n";
+    cout << "       input 'exit' to quit the program      \n";     
     cout << "=============================================\n";
 }
 
@@ -44,35 +45,41 @@ void cleanupMemory() {
 
 
 int main() {
-    // load the datas
+    // load the csv files
     initializeSystem();
     
-    displayWelcome();
-    
-    // Login process
-    string username, password;
-    User currentUser;
-    
-    cout << "Username: ";
-    cin >> username;
-    cout << "Password: ";
-    cin >> password;
-    
-    if (loginUser(username, password, currentUser)) {
-        cout << "\nLogin successful! Welcome, " << username << "!\n";
-        
-        // Direct to appropriate menu based on user type
-        if (currentUser.isAdmin) {
-            adminMenu();
+    while (true) {
+        displayWelcome();
+
+        // Login process
+        string username, password;
+        User currentUser;
+
+        cout << "Username: ";
+        cin >> username;
+            if (username == "exit"){
+                cout << "Exiting the Cashier Program...\n";
+                cout << "Thank you for using Ed's Nilaga-an Cashier System!\n";
+                return 0;
+            }
+        cout << "Password: ";
+        cin >> password;
+
+        if (loginUser(username, password, currentUser)) {
+            clearSystem();
+            cout << "\nLogin successful! Welcome, " << username << "!\n";
+
+            if (currentUser.isAdmin) {
+                clearSystem();
+                adminMenu(); 
+            } else {
+                // cashier menu nadi kamo nadi bahala
+            }
         } else {
-            cout << "cashier";
+            cout << "Invalid username or password!\n";
         }
-    } else {
-        cout << "Invalid username or password!\n";
     }
-    
-    // Cleanup before exit
+
     cleanupMemory();
-    
     return 0;
 }

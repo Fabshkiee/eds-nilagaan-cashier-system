@@ -1,4 +1,5 @@
 #include "admin.h"
+#include "clearSystem.h"
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -22,18 +23,23 @@ void manageMenu() {
         
         switch (choice) {
             case 1:
+                clearSystem();
                 displayMenu();
                 break;
             case 2:
+                clearSystem();
                 addFoodItem();
                 break;
             case 3:
+                clearSystem();
                 updateFoodItem();
                 break;
             case 4:
+                clearSystem();
                 deleteFoodItem();
                 break;
             case 5:
+                clearSystem();
                 return;
             default:
                 cout << "Invalid choice! Please try again.\n";
@@ -57,18 +63,24 @@ void manageUsers() {
         
         switch (choice) {
             case 1:
+                clearSystem();
                 showAllCashiers();
                 break;
             case 2:
+                clearSystem();
                 addCashier();
                 break;
             case 3:
+                clearSystem();
                 updateCashier();
                 break;
             case 4:
+                clearSystem();
                 deleteCashier();
                 break;
             case 5:
+                clearSystem();
+                cout << "Returning to admin menu...\n";
                 return;
             default:
                 cout << "Invalid choice! Please try again.\n";
@@ -91,12 +103,15 @@ void adminMenu() {
         
         switch (choice) {
             case 1:
+                clearSystem();
                 manageMenu();
                 break;
             case 2:
+                clearSystem();
                 manageUsers();
                 break;
             case 3:
+                clearSystem();
                 cout << "Logging out...\n";
                 return;
             default:

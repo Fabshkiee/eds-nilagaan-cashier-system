@@ -1,5 +1,32 @@
-Meals;D0G;Hot Dog;20.00
-Extras;FR1;Fries;50.00
-Meals;D1G;BRUH;20.00
-Extras;D0L;OL;20.00
-Drinks;D3W;Mountain Dew;20.00
+Meals;N1B;Nilagang Baka;120.00
+Meals;N2P;Nilagang Baboy;110.00
+Meals;N3M;Nilagang Manok;100.00
+Meals;S1B;Sinigang na Baboy;110.00
+Meals;S2H;Sinigang na Hipon;130.00
+Meals;A1D;Adobong Manok;90.00
+Meals;A2B;Adobong Baboy;100.00
+Meals;L1B;Lechon Kawali;120.00
+Meals;T1A;Tinolang Manok;95.00
+Meals;G1I;Ginataang Gulay;80.00
+Meals;D1S;Daing na Bangus;90.00
+Drinks;I1T;Iced Tea;20.00
+Drinks;S1C;Softdrinks;25.00
+Drinks;B1J;Buko Juice;40.00
+Drinks;G1M;Gulaman at Sago;25.00
+Drinks;K1P;Kopiko Brown;15.00
+Drinks;T1B;Taho;30.00
+Drinks;P1H;Halo-Halo;50.00
+Extras;R1P;Kanin (Plain);15.00
+Extras;R2G;Sinangag;20.00
+Extras;E1I;Itlog na Maalat;25.00
+Extras;E2P;Itlog na Prito;15.00
+Extras;T1H;Toyo't Suka;5.00
+Extras;B1G;Bagoong;10.00
+Extras;C1A;Chicharon Bulaklak;60.00
+Extras;F1D;Fried Dilis;30.00
+Extras;P1T;Puto;10.00
+Extras;B1B;Bibingka;40.00
+Extras;S1M;Sapin-Sapin;35.00
+Extras;T1K;Turon;20.00
+Meals;K1R;Kare-Kare;130.00
+Unknown;0;0;0.10
