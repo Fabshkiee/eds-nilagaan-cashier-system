@@ -9,7 +9,7 @@ Meals;L1B;Lechon Kawali;120.00
 Meals;T1A;Tinolang Manok;95.00
 Meals;G1I;Ginataang Gulay;80.00
 Meals;D1S;Daing na Bangus;90.00
-Drinks;I1T;Iced Tea;20.00
+Drinks;I1T;Lemon Tea;25.00
 Drinks;S1C;Softdrinks;25.00
 Drinks;B1J;Buko Juice;40.00
 Drinks;G1M;Gulaman at Sago;25.00
@@ -29,4 +29,3 @@ Extras;B1B;Bibingka;40.00
 Extras;S1M;Sapin-Sapin;35.00
 Extras;T1K;Turon;20.00
 Meals;K1R;Kare-Kare;130.00
-Unknown;0;0;0.10

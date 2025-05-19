@@ -142,28 +142,40 @@ void addFoodItem() {
 
 // Display the menu
 void displayMenu() {
-  cout << "\n--- Current Menu ---\n";
-  cout << left << setw(10) << "Category" << setw(10) << "Code" << setw(30)
-       << "Name" << right << setw(10) << "Price" << endl;
-  cout << "--------------------------------------------------------------------"
-          "------\n";
-  string categories[] = {"Meals", "Drinks", "Extras"};
-  for (int c = 0; c < 3; c++) {
-    bool printed = false;
-    for (int i = 0; i < menuCount; i++) {
-      if (categoryToString(menu[i].category) == categories[c]) {
-        cout << left << setw(10) << categories[c] << setw(10) << menu[i].code
-             << setw(30) << menu[i].name << right << setw(7) << fixed
-             << setprecision(2) << "PHP" << menu[i].price << endl;
-        printed = true;
-      }
+    int width = 56;
+    // Header
+    cout << "\033[1;33m========================[ MENU ]========================\033[0m\n\n";
+    string categories[] = {"Meals", "Drinks", "Extras"};
+    string catColors[] = {"\033[1;32m", "\033[1;36m", "\033[1;35m"}; // Green, Cyan, Magenta
+    for (int c = 0; c < 3; c++) {
+        bool printed = false;
+        for (int i = 0; i < menuCount; i++) {
+            if (categoryToString(menu[i].category) == categories[c]) {
+                if (!printed) {
+                    cout << catColors[c] << categories[c] << "\033[0m\n";
+                    cout << "\033[1;37mCode   | Name                        | Price\033[0m\n";
+                    cout << "\033[90m-------|-----------------------------|---------\033[0m\n";
+                    printed = true;
+                }
+                
+                char priceStr[16];
+                sprintf(priceStr, "PHP%.2f", menu[i].price);
+                stringstream ss;
+                ss << "\033[1;37m" << left << setw(7) << menu[i].code << "| ";
+                ss << left << setw(28) << menu[i].name << "| ";
+                ss << right << setw(9) << priceStr << "\033[0m";
+                cout << ss.str() << endl;
+            }
+        }
+        if (printed) {
+          cout << endl;
+        }
     }
-    if (printed)
-      cout << endl; // Add a blank line after each category
-  }
-  if (menuCount == 0) {
-    cout << "No items in the menu.\n";
-  }
+    if (menuCount == 0) {
+        cout << "\033[91mNo items in the menu.\033[0m\n";
+    }
+    cout << endl;
+    cout << "\033[1;33m========================================================\033[0m\n";
 }
 
 // Update a food item
@@ -184,7 +196,8 @@ void updateFoodItem() {
       int category;
       string name;
       double price;
-      cout << "Enter new category (1= Drinks, 2= Meals, 3= Extras, 0 to keep current): ";
+      cout << "Enter new category (1= Meals, 2= Drinks, 3= Extras, 0 to keep "
+              "current): ";
       string catInput;
       cin >> catInput;
       try {

@@ -1,0 +1,15 @@
+===== RECEIPT =====
+Receipt: 20250520_031343
+Cashier: Yuske
+Date: 2025-5-20
+Time: 3:13:43
+------------------
+5 x Turon - PHP100.00
+------------------
+Subtotal: PHP100.00
+Discount (20%): -PHP20.00
+TOTAL: PHP80.00
+PAID: PHP80.00
+CHANGE: PHP0.00
+==================
+Thank you for your order!

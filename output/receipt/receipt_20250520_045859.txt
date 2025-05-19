@@ -1,0 +1,16 @@
+===== RECEIPT =====
+Receipt: 20250520_045859
+Cashier: Yuske
+Date: 2025-5-20
+Time: 4:58:59
+------------------
+50 x Turon - PHP1000.00
+20 x Bibingka - PHP800.00
+40 x Chicharon Bulaklak - PHP2400.00
+20 x Nilagang Baka - PHP2400.00
+------------------
+TOTAL: PHP6600.00
+PAID: PHP10000.00
+CHANGE: PHP3400.00
+==================
+Thank you for your order!

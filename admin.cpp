@@ -10,17 +10,24 @@ using namespace std;
 // Manage menu items
 void manageMenu() {
     int choice;
-    
     while (true) {
-        cout << "\n==== Menu Management ====\n";
-        cout << "1. View Menu\n";
-        cout << "2. Add Item\n";
-        cout << "3. Update Item\n";
-        cout << "4. Delete Item\n";
-        cout << "5. Back to Admin Menu\n";
-        cout << "Enter your choice: ";
-        cin >> choice;
-        
+        cout << "\n\033[1;33m==== [ MENU MANAGEMENT ] ====\033[0m\n";
+        cout << "\033[36m1. View Menu\033[0m\n";
+        cout << "\033[36m2. Add Item\033[0m\n";
+        cout << "\033[36m3. Update Item\033[0m\n";
+        cout << "\033[36m4. Delete Item\033[0m\n";
+        cout << "\033[91m5. Back to Admin Menu\033[0m\n";
+        cout << "\033[1;33m------------------------------\033[0m\n";
+        cout << "\033[36mEnter your choice:\033[0m ";
+        string input;
+        cin >> input;
+        try {
+            choice = stoi(input);
+        } catch (...) {
+            clearSystem();
+            cout << "\033[91mInvalid input! Please enter a number.\033[0m\n";
+            continue;
+        }
         switch (choice) {
             case 1:
                 clearSystem();
@@ -40,9 +47,11 @@ void manageMenu() {
                 break;
             case 5:
                 clearSystem();
+                cout << "\033[92mReturning to admin menu...\033[0m\n";
                 return;
             default:
-                cout << "Invalid choice! Please try again.\n";
+                clearSystem();
+                cout << "\033[91mInvalid choice! Please try again.\033[0m\n";
         }
     }
 }
@@ -50,17 +59,24 @@ void manageMenu() {
 // Manage cashier accounts
 void manageUsers() {
     int choice;
-    
     while (true) {
-        cout << "\n==== Cashier Management ====\n";
-        cout << "1. View All Cashiers\n";
-        cout << "2. Add Cashier\n";
-        cout << "3. Update Cashier\n";
-        cout << "4. Delete Cashier\n";
-        cout << "5. Back to Admin Menu\n";
-        cout << "Enter your choice: ";
-        cin >> choice;
-        
+        cout << "\n\033[1;33m==== [ CASHIER MANAGEMENT ] ====\033[0m\n";
+        cout << "\033[36m1. View All Cashiers\033[0m\n";
+        cout << "\033[36m2. Add Cashier\033[0m\n";
+        cout << "\033[36m3. Update Cashier\033[0m\n";
+        cout << "\033[36m4. Delete Cashier\033[0m\n";
+        cout << "\033[91m5. Back to Admin Menu\033[0m\n";
+        cout << "\033[1;33m------------------------------\033[0m\n";
+        cout << "\033[36mEnter your choice:\033[0m ";
+        string input;
+        cin >> input;
+        try {
+            choice = stoi(input);
+        } catch (...) {
+            clearSystem();
+            cout << "\033[91mInvalid input! Please enter a number.\033[0m\n";
+            continue;
+        }
         switch (choice) {
             case 1:
                 clearSystem();
@@ -80,27 +96,34 @@ void manageUsers() {
                 break;
             case 5:
                 clearSystem();
-                cout << "Returning to admin menu...\n";
+                cout << "\033[92mReturning to admin menu...\033[0m\n";
                 return;
             default:
-                cout << "Invalid choice! Please try again.\n";
+                clearSystem();
+                cout << "\033[91mInvalid choice! Please try again.\033[0m\n";
         }
     }
 }
 
-
 // Display and handle the admin menu
 void adminMenu() {
     int choice;
-    
     while (true) {
-        cout << "\n==== Admin Menu ====\n";
-        cout << "1. Manage Menu\n";
-        cout << "2. Manage Cashiers\n";
-        cout << "3. Logout\n";
-        cout << "Enter your choice: ";
-        cin >> choice;
-        
+        cout << "\n\033[1;33m==== [ ADMIN MENU ] ====\033[0m\n";
+        cout << "\033[36m1. Manage Menu\033[0m\n";
+        cout << "\033[36m2. Manage Cashiers\033[0m\n";
+        cout << "\033[91m3. Logout\033[0m\n";
+        cout << "\033[1;33m------------------------------\033[0m\n";
+        cout << "\033[36mEnter your choice:\033[0m ";
+        string input;
+        cin >> input;
+        try {
+            choice = stoi(input);
+        } catch (...) {
+            clearSystem();
+            cout << "\033[91mInvalid input! Please enter a number.\033[0m\n";
+            continue;
+        }
         switch (choice) {
             case 1:
                 clearSystem();
@@ -112,10 +135,11 @@ void adminMenu() {
                 break;
             case 3:
                 clearSystem();
-                cout << "Logging out...\n";
+                cout << "\033[92mLogging out...\033[0m\n";
                 return;
             default:
-                cout << "Invalid choice! Please try again.\n";
+                clearSystem();
+                cout << "\033[91mInvalid choice! Please try again.\033[0m\n";
         }
     }
 }

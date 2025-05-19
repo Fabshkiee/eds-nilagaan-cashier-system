@@ -4,6 +4,7 @@
 #include "food_item.h"
 #include "admin.h"
 #include "clearSystem.h"
+#include "cashier.h"
 using namespace std;
 
 //for arrays
@@ -13,6 +14,7 @@ const int MAX_MENU_ITEMS = 100;
 // Global variables
 User* users = new User[MAX_USERS];
 FoodItem* menu = new FoodItem[MAX_MENU_ITEMS];
+string lastCashierUsername;
 
 int userCount = 0;
 int menuCount = 0;
@@ -25,14 +27,31 @@ void initializeSystem() {
 
 // Display welcome screen
 void displayWelcome() {
-    cout << "=============================================\n";
-    cout << "   Welcome to Ed's Nilaga-an Cashier System! \n";
-    cout << "=============================================\n";
+    cout << "\033[1;33m===============================================================================\n";
+    cout << "  _____ ____  _ ____    ____   ___  ____    ______   ______ _____ _____ __  __ \n";
+    cout << " | ____|  _ \\( ) ___|  |  _ \\ / _ \\ / ___|  / ___\\ \\ / / ___|_   _| ____|  \\/  |\n";
+    cout << " |  _| | | | |/\\___ \\  | |_) | | | \\___ \\  \\___ \\ V /\\___ \\ | | |  _| | |\\/| |\n";
+    cout << " | |___| |_| |  ___) | |  __/| |_| |___) |  ___) || |  ___) || | | |___| |  | |\n";
+    cout << " |_____|____/  |____/  |_|    \\___/|____/  |____/ |_| |____/ |_| |_____|_|  |_|\n";
+    cout << "===============================================================================\033[0m\n";
+    cout << "                               \033[97m(  )   (   )  )\033[0m\n";
+    cout << "                                \033[97m) (   )  (  (\033[0m\n";
+    cout << "                               \033[97m( )  (    ) )\033[0m\n";
+    cout << "                               \033[36m_____________\033[0m\n";
+    cout << "                               \033[36m<_____________> ___\033[0m\n";
+    cout << "                               \033[36m|             |/ _ \\\033[0m\n";
+    cout << "                               \033[36m|               | | |\033[0m\n";
+    cout << "                               \033[36m|               |_| |\033[0m\n";
+    cout << "                            \033[36m___|             |\\___/\033[0m\n";
+    cout << "                           \033[36m/    \\___________/    \\\033[0m\n";
+    cout << "                           \033[36m\\_____________________/\033[0m\n";
+
     cout << "\n";
-    cout << "      Ready for another flavorful day?\n";
-    cout << "            LOG IN NADA MANGO!\n\n\n";
-    cout << "       input 'exit' to quit the program      \n";     
-    cout << "=============================================\n";
+    cout << "                           \033[32mLinaga para sa Maayong Aga\033[0m\n";
+    cout << "                             \033[32mLOG IN YOUR INFO BELOW!\033[0m\n";
+    cout << "\n";
+    cout << "                        input \033[91m'exit'\033[0m to quit the program\n";
+    cout << "\033[1;33m===============================================================================\033[0m\n";
 }
 
 // Clean up dynamically allocated memory
@@ -49,34 +68,39 @@ int main() {
     initializeSystem();
     
     while (true) {
+        clearSystem();
         displayWelcome();
 
         // Login process
         string username, password;
         User currentUser;
 
-        cout << "Username: ";
+        cout << "\033[36mUsername:\033[0m ";
         cin >> username;
             if (username == "exit"){
-                cout << "Exiting the Cashier Program...\n";
-                cout << "Thank you for using Ed's Nilaga-an Cashier System!\n";
+                cout << "\033[91mExiting the Cashier Program...\033[0m\n";
+                cout << "\033[92mThank you for using Ed's Nilaga-an Cashier System!\033[0m\n";
+                cleanupMemory();
                 return 0;
             }
-        cout << "Password: ";
+        cout << "\033[36mPassword:\033[0m ";
         cin >> password;
 
         if (loginUser(username, password, currentUser)) {
             clearSystem();
-            cout << "\nLogin successful! Welcome, " << username << "!\n";
+            cout << "\n\033[92mLogin successful! Welcome, " << username << "!\033[0m\n";
 
             if (currentUser.isAdmin) {
                 clearSystem();
                 adminMenu(); 
             } else {
-                // cashier menu nadi kamo nadi bahala
+                clearSystem();
+                lastCashierUsername = username;
+                cashierMenu();
             }
         } else {
-            cout << "Invalid username or password!\n";
+            clearSystem();
+            cout << "\033[91mInvalid username or password!\033[0m\n";
         }
     }
 

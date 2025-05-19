@@ -35,7 +35,9 @@ string decrypt(string str) {
   return str;
 }
 
-string dataPath(const string &filename) { return "output/data/" + filename; }
+string dataPath(const string &filename) { 
+  return "output/data/" + filename; 
+}
 
 // Save users to file
 void saveUsers() {

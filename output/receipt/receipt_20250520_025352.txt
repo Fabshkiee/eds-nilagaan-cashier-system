@@ -1,0 +1,13 @@
+===== RECEIPT =====
+Receipt: 20250520_025352
+Cashier: cashier
+Date: 2025-5-20
+Time: 2:53:52
+------------------
+5 x Turon - PHP100.00
+------------------
+TOTAL: PHP100.00
+PAID: PHP100.00
+CHANGE: PHP0.00
+==================
+Thank you for your order!
