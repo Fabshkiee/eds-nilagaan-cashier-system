@@ -1,0 +1,16 @@
+===== RECEIPT =====
+Receipt: 20250520_203824
+Cashier: cashier
+Date: 2025-5-20
+Time: 20:38:24
+------------------
+4 x Kanin (Plain) - PHP60.00
+80 x Sinangag - PHP1600.00
+------------------
+Subtotal: [32mPHP1660.00[0m
+Discount (20%): -[32mPHP332.00[0m
+TOTAL:  PHP1328.00
+PAID:   PHP1400.00
+CHANGE: PHP72.00
+==================
+Thank you for your order!

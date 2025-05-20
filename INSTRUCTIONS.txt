@@ -1,0 +1,15 @@
+1. Open Command Prompt
+
+2. Press Win + R, type cmd, and press Enter.
+Navigate to the Project Directory
+
+3. Use the cd command to go to the project folder. For example:
+cd "C:\Users\rYUSKE fABROS\Desktop\eds-nilagaan-cashier-system"
+
+4. Compile the Program
+If you have a C++ compiler (like g++ from MinGW or TDM-GCC), 
+compile all .cpp files:
+g++ main.cpp admin.cpp food_item.cpp user.cpp clearSystem.cpp cashier.cpp -o output\main.exe
+
+5. run program 
+.\output\main.exe

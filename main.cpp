@@ -35,7 +35,7 @@ void displayWelcome() {
     cout << "|_____|____/  |____/  |_|    \\___/|____/  |____/ |_| |____/ |_| |_____|_|  |_|\n";
     cout << "===============================================================================\033[0m\n";
     cout << "                               \033[97m(  )   (   )  )\033[0m\n";
-    cout << "                                \033[97m) (   )  (  (\033[0m\n";
+    cout << "                                \033[97m) (   )  (  (\033[0m\n"; 
     cout << "                               \033[97m( )  (    ) )\033[0m\n";
     cout << "                               \033[36m_____________\033[0m\n";
     cout << "                               \033[36m<_____________> ___\033[0m\n";
@@ -79,8 +79,9 @@ int main() {
         cout << "\033[36mUsername:\033[0m ";
         cin >> username;
             if (username == "exit"){
+                clearSystem();
                 cout << "\033[91mExiting the Cashier Program...\033[0m\n";
-                cout << "\033[92mThank you for using Ed's Nilaga-an Cashier System!\033[0m\n";
+                cout << "\033[92mThank you for using Ed's Nilaga-an POS System!\033[0m\n";
                 cleanupMemory();
                 return 0;
             }

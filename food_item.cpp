@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 string dataPath(const string &filename);
@@ -142,40 +143,43 @@ void addFoodItem() {
 
 // Display the menu
 void displayMenu() {
-    int width = 56;
-    // Header
-    cout << "\033[1;33m========================[ MENU ]========================\033[0m\n\n";
-    string categories[] = {"Meals", "Drinks", "Extras"};
-    string catColors[] = {"\033[1;32m", "\033[1;36m", "\033[1;35m"}; // Green, Cyan, Magenta
-    for (int c = 0; c < 3; c++) {
-        bool printed = false;
-        for (int i = 0; i < menuCount; i++) {
-            if (categoryToString(menu[i].category) == categories[c]) {
-                if (!printed) {
-                    cout << catColors[c] << categories[c] << "\033[0m\n";
-                    cout << "\033[1;37mCode   | Name                        | Price\033[0m\n";
-                    cout << "\033[90m-------|-----------------------------|---------\033[0m\n";
-                    printed = true;
-                }
-                
-                char priceStr[16];
-                sprintf(priceStr, "PHP%.2f", menu[i].price);
-                stringstream ss;
-                ss << "\033[1;37m" << left << setw(7) << menu[i].code << "| ";
-                ss << left << setw(28) << menu[i].name << "| ";
-                ss << right << setw(9) << priceStr << "\033[0m";
-                cout << ss.str() << endl;
-            }
+  int width = 56;
+  // Header
+  cout << "\033[1;33m========================[ MENU "
+          "]========================\033[0m\n\n";
+  string categories[] = {"Meals", "Drinks", "Extras"};
+  string catColors[] = {"\033[1;32m", "\033[1;36m",
+                        "\033[1;35m"}; // Green, Cyan, Magenta
+  for (int c = 0; c < 3; c++) {
+    bool printed = false;
+    for (int i = 0; i < menuCount; i++) {
+      if (categoryToString(menu[i].category) == categories[c]) {
+        if (!printed) {
+          cout << catColors[c] << categories[c] << "\033[0m\n";
+          cout << "\033[1;37mCode   | Name                        | "
+                  "Price\033[0m\n";
+          cout << "\033[90m-------|-----------------------------|---------\033["
+                  "0m\n";
+          printed = true;
         }
-        if (printed) {
-          cout << endl;
-        }
+
+        char priceStr[16];
+        sprintf(priceStr, "PHP%.2f", menu[i].price);
+        cout << "\033[1;37m" << left << setw(7) << menu[i].code << "| " << left
+             << setw(28) << menu[i].name << "| " << right << setw(9) << priceStr
+             << "\033[0m" << endl;
+      }
     }
-    if (menuCount == 0) {
-        cout << "\033[91mNo items in the menu.\033[0m\n";
+    if (printed) {
+      cout << endl;
     }
-    cout << endl;
-    cout << "\033[1;33m========================================================\033[0m\n";
+  }
+  if (menuCount == 0) {
+    cout << "\033[91mNo items in the menu.\033[0m\n";
+  }
+  cout << endl;
+  cout << "\033[1;33m========================================================"
+          "\033[0m\n";
 }
 
 // Update a food item
@@ -227,6 +231,7 @@ void updateFoodItem() {
       return;
     }
   }
+  clearSystem();
   cout << "Item not found!\n";
 }
 

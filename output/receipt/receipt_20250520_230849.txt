@@ -1,0 +1,17 @@
+===== RECEIPT =====
+Receipt: 20250520_230849
+Cashier: cashier
+Date: 2025-5-20
+Time: 23:8:49
+------------------
+1 x Nilagang Baboy - PHP110.00
+1 x Ginataang Gulay - PHP80.00
+2 x Buko Juice - PHP80.00
+------------------
+Subtotal: [32mPHP270.00[0m
+Discount (20%): -[32mPHP54.00[0m
+TOTAL:  PHP216.00
+PAID:   PHP500.00
+CHANGE: PHP284.00
+==================
+Thank you for your order!

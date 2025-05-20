@@ -1,13 +1,13 @@
 ===== RECEIPT =====
-Receipt: 20250520_025352
+Receipt: 20250520_164413
 Cashier: cashier
 Date: 2025-5-20
-Time: 2:53:52
+Time: 16:44:13
 ------------------
-5 x Turon - PHP100.00
+2000 x Turon - PHP40000.00
 ------------------
-TOTAL: PHP100.00
-PAID: PHP100.00
-CHANGE: PHP0.00
+TOTAL: PHP40000.00
+PAID:  PHP50000000.00
+CHANGE: [32mPHP49960000.00
 ==================
 Thank you for your order!

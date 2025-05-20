@@ -58,17 +58,20 @@ void takeCustomerOrder() {
              << menu[itemIndex].price * quantities[i] << "\n";
       }
       cout << "\033[1;33m-------------------------\033[0m\n";
-      cout << "\033[36mSubtotal: PHP" << fixed << setprecision(2) << total << "\033[0m\n";
+      cout << "Subtotal: \033[32mPHP" << fixed << setprecision(2) << total
+           << "\033[0m\n";
     }
     cout << '\n';
-    cout << "\033[1;33m-------------------------------------------------------\033[0m\n"
+    cout << "\033[1;33m-------------------------------------------------------"
+            "\033[0m\n"
          << "Enter the \033[1;4;36mITEM CODE\033[0m to order\n"
          << "Type '\033[91mexit\033[0m' to cancel\n"
          << "Type '\033[92m0\033[0m' to finish and checkout\n"
-         << "\033[1;33m-------------------------------------------------------\033[0m\n";
+         << "\033[1;33m-------------------------------------------------------"
+            "\033[0m\n";
     string codeInput;
     cin >> codeInput;
-    if (codeInput == "exit"){
+    if (codeInput == "exit") {
       cout << "\033[91mOrder cancelled. Returning to menu...\033[0m\n";
       quantities.clear();
       orderItems.clear();
@@ -79,7 +82,7 @@ void takeCustomerOrder() {
       clearSystem();
       return;
     }
-    if (codeInput == "0"){
+    if (codeInput == "0") {
       clearSystem();
       break;
     }
@@ -92,13 +95,15 @@ void takeCustomerOrder() {
     }
     if (foundIndex != -1) {
       int quantity;
-      cout << "\033[36mEnter quantity for \033[0m" << menu[foundIndex].name << ": ";
+      cout << "\033[36mEnter quantity for \033[0m" << menu[foundIndex].name
+           << ": ";
       string qtyInput;
       cin >> qtyInput;
       try {
         quantity = stoi(qtyInput);
       } catch (...) {
-        cout << "\033[91mInvalid quantity. Please enter a valid number.\033[0m\n";
+        cout << "\033[91mInvalid quantity. Please enter a valid "
+                "number.\033[0m\n";
         continue;
       }
       if (quantity <= 0) {
@@ -130,29 +135,39 @@ void displayTotalOrder() {
          << setprecision(2) << menu[itemIndex].price * quantities[i] << "\n";
   }
   cout << "\033[1;33m======================\033[0m\n";
-  cout << "\033[36mTOTAL: PHP" << fixed << setprecision(2) << total << "\033[0m\n";
+  cout << "TOTAL: \033[32mPHP" << fixed << setprecision(2) << total
+       << "\033[0m\n";
 }
 
 bool askForDiscount() {
-  char response;
-  cout << "\n\033[36mDo you have a Senior/PWD card? (y/n): \033[0m";
-  cin >> response;
-  return (response == 'y' || response == 'Y');
+  while (true) {
+    cout << "\n\033[36mDo you have a Senior/PWD card? (y/n): \033[0m";
+    string response;
+    cin >> response;
+    if (response == "y" || response == "Y")
+      return true;
+    if (response == "n" || response == "N")
+      return false;
+    cout << "\033[91mPlease enter 'y' or 'n' only.\033[0m\n";
+    cin.clear();
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+  }
 }
 
 void applyDiscount(bool hasDiscount) {
   if (hasDiscount) {
     double discountAmount = total * DISCOUNT_RATE;
-    cout << "\033[92mDiscount applied (20%): -PHP" << fixed << setprecision(2)
+    cout << "Discount applied (20%): -\033[32mPHP" << fixed << setprecision(2)
          << discountAmount << "\033[0m\n";
     total -= discountAmount;
-    cout << "\033[36mNEW TOTAL: PHP" << fixed << setprecision(2) << total << "\033[0m\n";
+    cout << "NEW TOTAL: \033[32mPHP" << fixed << setprecision(2) << total
+         << "\033[0m\n";
   }
 }
 
 void takeCustomerPayment() {
   while (true) {
-    cout << "\n\033[36mEnter payment amount: PHP\033[0m";
+    cout << "\nEnter payment amount: \033[32mPHP\033[0m";
     string paymentInput;
     cin >> paymentInput;
     try {
@@ -162,8 +177,8 @@ void takeCustomerPayment() {
       continue;
     }
     if (payment < total) {
-      cout << "\033[91mInsufficient payment. Please enter at least PHP" << fixed
-           << setprecision(2) << total << ".\033[0m\n";
+      cout << "\033[91mInsufficient payment. Please enter at least \033[32mPHP"
+           << fixed << setprecision(2) << total << "\033[0m.\033[0m\n";
       continue;
     }
     break;
@@ -172,7 +187,8 @@ void takeCustomerPayment() {
 
 void calculateChange() {
   change = payment - total;
-  cout << "\033[36mChange: PHP" << fixed << setprecision(2) << change << "\033[0m\n";
+  cout << "Change: \033[32mPHP" << fixed << setprecision(2) << change
+       << "\033[0m\n";
   cout << "\nPress enter to see Receipt...";
   cin.ignore();
   cin.get();
@@ -186,12 +202,8 @@ void printReceipt(const string &username) {
   // Generate receipt code string
   char receiptCode[20]; // inspired by user "Ganado" in CPP.com Forums tysm
   sprintf(receiptCode, "%04d%02d%02d_%02d%02d%02d", // date
-          1900 + ltm->tm_year, 1 + ltm->tm_mon,
-          ltm->tm_mday, // ltm = year and so on great way use of pointers ty
-                        // nathsarr
-          ltm->tm_hour, ltm->tm_min,
-          ltm->tm_sec); // sprintf basically replaces those formats with the
-                        // pointers
+          1900 + ltm->tm_year, 1 + ltm->tm_mon, ltm->tm_mday, // ltm = year and so on great way use of pointers ty nathsarr
+          ltm->tm_hour, ltm->tm_min, ltm->tm_sec); // sprintf basically replaces those formats with the pointers
 
   char filename[100];
   sprintf(filename, "output/receipt/receipt_%s.txt",
@@ -214,14 +226,17 @@ void printReceipt(const string &username) {
   }
   cout << "------------------\n";
   if (hasDiscount) {
-    cout << "Subtotal: PHP" << fixed << setprecision(2)
-         << total / (1 - DISCOUNT_RATE) << "\n";
-    cout << "Discount (20%): -PHP" << fixed << setprecision(2)
-         << total * DISCOUNT_RATE / (1 - DISCOUNT_RATE) << "\n";
+    cout << "Subtotal: \033[32mPHP" << fixed << setprecision(2)
+         << total / (1 - DISCOUNT_RATE) << "\033[0m\n";
+    cout << "Discount (20%): -\033[32mPHP" << fixed << setprecision(2)
+         << total * DISCOUNT_RATE / (1 - DISCOUNT_RATE) << "\033[0m\n";
   }
-  cout << "TOTAL: PHP" << fixed << setprecision(2) << total << "\n";
-  cout << "PAID: PHP" << fixed << setprecision(2) << payment << "\n";
-  cout << "CHANGE: PHP" << fixed << setprecision(2) << change << "\n";
+  cout << "TOTAL: \033[32mPHP" << fixed << setprecision(2) << total
+       << "\033[0m\n";
+  cout << "PAID: \033[32mPHP" << fixed << setprecision(2) << payment
+       << "\033[0m\n";
+  cout << "CHANGE: \033[32mPHP" << fixed << setprecision(2) << change
+       << "\033[0m\n";
   cout << "==================\n";
   cout << "Thank you for your order!\n";
 
@@ -243,13 +258,13 @@ void printReceipt(const string &username) {
     }
     receiptFile << "------------------\n";
     if (hasDiscount) {
-      receiptFile << "Subtotal: PHP" << fixed << setprecision(2)
-                  << total / (1 - DISCOUNT_RATE) << "\n";
-      receiptFile << "Discount (20%): -PHP" << fixed << setprecision(2)
-                  << total * DISCOUNT_RATE / (1 - DISCOUNT_RATE) << "\n";
+      receiptFile << "Subtotal: \033[32mPHP" << fixed << setprecision(2)
+                  << total / (1 - DISCOUNT_RATE) << "\033[0m\n";
+      receiptFile << "Discount (20%): -\033[32mPHP" << fixed << setprecision(2)
+                  << total * DISCOUNT_RATE / (1 - DISCOUNT_RATE) << "\033[0m\n";
     }
-    receiptFile << "TOTAL: PHP" << fixed << setprecision(2) << total << "\n";
-    receiptFile << "PAID: PHP" << fixed << setprecision(2) << payment << "\n";
+    receiptFile << "TOTAL:  PHP" << fixed << setprecision(2) << total << "\n";
+    receiptFile << "PAID:   PHP" << fixed << setprecision(2) << payment << "\n";
     receiptFile << "CHANGE: PHP" << fixed << setprecision(2) << change << "\n";
     receiptFile << "==================\n";
     receiptFile << "Thank you for your order!\n";
@@ -257,7 +272,6 @@ void printReceipt(const string &username) {
   }
   cout << "\nPress enter to continue...";
   cin.ignore();
-  cin.get();
   clearSystem();
 }
 

@@ -1,0 +1,15 @@
+===== RECEIPT =====
+Receipt: 20250520_215949
+Cashier: cashier
+Date: 2025-5-20
+Time: 21:59:49
+------------------
+50 x Kanin (Plain) - PHP750.00
+------------------
+Subtotal: [32mPHP750.00[0m
+Discount (20%): -[32mPHP150.00[0m
+TOTAL:  PHP600.00
+PAID:   PHP600.00
+CHANGE: PHP0.00
+==================
+Thank you for your order!
